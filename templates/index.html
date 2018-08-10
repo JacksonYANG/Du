@@ -41,14 +41,15 @@
                     <span class="icon icon-bar"></span>
                     <span class="icon icon-bar"></span>
                </button>
-               <a href="index.html" class="navbar-brand">LightBlog</a>
+               <a href={% url 'Du:index' %} class="navbar-brand">独|LightBlog</a>
           </div>
           <div class="collapse navbar-collapse">
                <ul class="nav navbar-nav navbar-right">
                     <li class="active"><a href={% url 'Du:index' %}>Home | 首页</a></li>
                     <li><a href={% url 'Du:hot' %}>HotSpot | 热点</a></li>
                     <li><a href={% url 'Du:blog' %}>Blog | 博客</a></li>
-                    <li><a href={% url 'Du:user' %}>Me | 我</a></li>
+                    <li><a href={% url 'Du:user' %}>登录 | 注册</a></li>
+
                </ul>
           </div>
 
@@ -81,11 +82,6 @@
 
                <div class="col-md-offset-1 col-md-10 col-sm-12">
                     <div class="blog-post-thumb">
-                         <div class="blog-post-image">
-                              <a href="single-post.html">
-                                   <img src="{% static 'images/blog-image1.jpg' %}" class="img-responsive" alt="Blog Image">
-                              </a>
-                         </div>
                          <div class="blog-post-title">
                               <h3><a href="single-post.html">We Help You Create Perfect Modern Design</a></h3>
                          </div>
@@ -101,11 +97,6 @@
                     </div>
 
                     <div class="blog-post-thumb">
-                         <div class="blog-post-image">
-                              <a href="single-post.html">
-                                   <img src="{% static 'images/blog-image2.jpg' %}" class="img-responsive" alt="Blog Image">
-                              </a>
-                         </div>
                          <div class="blog-post-title">
                               <h3><a href="single-post.html">In pretium tellus et ante accumsan</a></h3>
                          </div>
@@ -121,11 +112,6 @@
                     </div>
 
                     <div class="blog-post-thumb">
-                         <div class="blog-post-video">
-                              <div class="embed-responsive embed-responsive-16by9">
-                                   video
-                              </div>
-                         </div>
                          <div class="blog-post-title">
                               <h3><a href="single-post.html">Nam interdum maximus dolor faucibus</a></h3>
                          </div>
@@ -141,11 +127,6 @@
                     </div>
 
                     <div class="blog-post-thumb">
-                         <div class="blog-post-image">
-                              <a href="single-post.html">
-                                   <img src="{% static 'images/blog-image3.jpg' %}" class="img-responsive" alt="Blog Image">
-                              </a>
-                         </div>
                          <div class="blog-post-title">
                               <h3><a href="single-post.html">The ingredients that make a great burger</a></h3>
                          </div>
@@ -161,11 +142,6 @@
                     </div>
 
                     <div class="blog-post-thumb">
-                         <div class="blog-post-image">
-                              <a href="single-post.html">
-                                   <img src="{% static 'images/blog-image4.jpg' %}" class="img-responsive" alt="Blog Image">
-                              </a>
-                         </div>
                          <div class="blog-post-title">
                               <h3><a href="single-post.html">Vestibulum vel mauris nec ex tempus</a></h3>
                          </div>
