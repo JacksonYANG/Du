@@ -5,15 +5,16 @@
 
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=Edge">
-<meta name="description" content="">
-<meta name="keywords" content="">
-<meta name="author" content="">
+<meta name="description" content="JacksonYANG的博客,一个轻阅读博客,致力于让大家有一个自由发言的场所,同时运用机器学习与大数据的方法让大家接收到自己喜欢的热点新闻">
+<meta name="keywords" content="独, 轻博客, 博客, 个人, 热点, 新闻, LightBlog, 分享">
+<meta name="author" content="JacksonYANG">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 <title>独-LightBlog</title>
 
 <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
 <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
+<link rel="stylesheet" href="{% static 'favicon.ico' %}">
 
 <!-- Main css -->
 <link rel="stylesheet" href="{% static 'css/style.css' %}">
@@ -46,9 +47,10 @@
           <div class="collapse navbar-collapse">
                <ul class="nav navbar-nav navbar-right">
                     <li class="active"><a href={% url 'Du:index' %}>Home | 首页</a></li>
-                    <li><a href={% url 'Du:hot' %}>HotSpot | 热点</a></li>
                     <li><a href={% url 'Du:blog' %}>Blog | 博客</a></li>
-                    <li><a href={% url 'Du:user' %}>登录 | 注册</a></li>
+                    <li><a href={% url 'Du:hot' %}>HotSpot | 热点</a></li>
+                    <li><a href={% url 'Du:music' %}>Music | 音乐</a></li>
+                    <li><a href={% url 'Du:login' %}>登录 | 注册</a></li>
 
                </ul>
           </div>
@@ -79,84 +81,31 @@
 <section id="blog">
      <div class="container">
           <div class="row">
+              <div class="col-md-offset-1 col-md-10 col-sm-12">
+                  {% for blog in blog_list %}
+                      <div class="blog-post-thumb">
+                          <div class="blog-post-title">
+                              <h3><a href='{{ blog.get_absolute_url }}'>{{ blog.title }}</a></h3>
+                          </div>
+                          <div class="blog-post-format">
+                              <span><a href="#">{{ blog.author.name }}</a></span>
+                              <span><i class="fa fa-date"></i>{{ blog.created_date }}</span>
+{#                              <span><a href="#"><i class="fa fa-comment-o"></i>{{  }}</a></span>#}
+                          </div>
+                          <div class="blog-post-des">
+                              <p>{{ blog.article }}</p>
+                              <a href='{{ blog.get_absolute_url }}' class="btn btn-default">继续阅读</a>
+                          </div>
+                      </div>
 
-               <div class="col-md-offset-1 col-md-10 col-sm-12">
-                    <div class="blog-post-thumb">
-                         <div class="blog-post-title">
-                              <h3><a href="single-post.html">We Help You Create Perfect Modern Design</a></h3>
-                         </div>
-                         <div class="blog-post-format">
-                              <span><a href="#"><img src="{% static 'images/author-image1.jpg' %}" class="img-responsive img-circle"> Jen Lopez</a></span>
-                              <span><i class="fa fa-date"></i> July 22, 2017</span>
-                              <span><a href="#"><i class="fa fa-comment-o"></i> 35 Comments</a></span>
-                         </div>
-                         <div class="blog-post-des">
-                              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-                              <a href="single-post.html" class="btn btn-default">Continue Reading</a>
-                         </div>
-                    </div>
-
-                    <div class="blog-post-thumb">
-                         <div class="blog-post-title">
-                              <h3><a href="single-post.html">In pretium tellus et ante accumsan</a></h3>
-                         </div>
-                         <div class="blog-post-format">
-                              <span><a href="#"><img src="{% static 'images/author-image2.jpg' %}" class="img-responsive img-circle"> Leo Dennis</a></span>
-                              <span><i class="fa fa-date"></i> June 10, 2017</span>
-                              <span><a href="#"><i class="fa fa-comment-o"></i> 48 Comments</a></span>
-                         </div>
-                         <div class="blog-post-des">
-                              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-                              <a href="single-post.html" class="btn btn-default">Continue Reading</a>
-                         </div>
-                    </div>
-
-                    <div class="blog-post-thumb">
-                         <div class="blog-post-title">
-                              <h3><a href="single-post.html">Nam interdum maximus dolor faucibus</a></h3>
-                         </div>
-                         <div class="blog-post-format">
-                              <span><a href="#"><img src="{% static 'images/author-image1.jpg' %}" class="img-responsive img-circle"> Jen Lopez</a></span>
-                              <span><i class="fa fa-date"></i> May 30, 2017</span>
-                              <span><a href="#"><i class="fa fa-comment-o"></i> 63 Comments</a></span>
-                         </div>
-                         <div class="blog-post-des">
-                              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-                              <a href="single-post.html" class="btn btn-default">Continue Reading</a>
-                         </div>
-                    </div>
-
-                    <div class="blog-post-thumb">
-                         <div class="blog-post-title">
-                              <h3><a href="single-post.html">The ingredients that make a great burger</a></h3>
-                         </div>
-                         <div class="blog-post-format">
-                              <span><a href="#"><img src="{% static 'images/author-image2.jpg' %}" class="img-responsive img-circle"> Leo Dennis</a></span>
-                              <span><i class="fa fa-date"></i> April 18, 2017</span>
-                              <span><a href="#"><i class="fa fa-comment-o"></i> 124 Comments</a></span>
-                         </div>
-                         <div class="blog-post-des">
-                              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-                              <a href="single-post.html" class="btn btn-default">Continue Reading</a>
-                         </div>
-                    </div>
-
-                    <div class="blog-post-thumb">
-                         <div class="blog-post-title">
-                              <h3><a href="single-post.html">Vestibulum vel mauris nec ex tempus</a></h3>
-                         </div>
-                         <div class="blog-post-format">
-                              <span><a href="#"><img src="{% static 'images/author-image1.jpg' %}" class="img-responsive img-circle"> Jen Lopez</a></span>
-                              <span><i class="fa fa-date"></i> March 12, 2017</span>
-                              <span><a href="#"><i class="fa fa-comment-o"></i> 256 Comments</a></span>
-                         </div>
-                         <div class="blog-post-des">
-                              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-                              <a href="single-post.html" class="btn btn-default">Continue Reading</a>
-                         </div>
-                    </div>
+                  {% empty %}
+                      <div class="blog-post-thumb">
+                          <div class="blog-post-title">
+                              <h3><a href={% url 'Du:index' %}>暂时还没有热点博客喔</a></h3>
+                          </div>
+                      </div>
+                  {% endfor %}
                </div>
-
           </div>
      </div>
 </section>
@@ -176,7 +125,7 @@
                </div>
 
                <div class="col-md-4 col-md-offset-1 col-sm-6">
-                    <h3>来自The Only One</h3>
+                    <h3>来自JacksonYANG</h3>
                     <p><i class="fa fa-globe"></i> Weibo : http://weibo.com/u/6567633088</p>
                     <p><i class="fa fa-globe"></i> Wechat : LightBlog_TOO</p>
                     <p><i class="fa fa-save"></i> jacksonyang_work@outlook.com</p>
@@ -194,6 +143,11 @@
                          <li><a href="https://www.reddit.com/" class="fa fa-reddit"></a></li>
                          <li><a href="https://www.instagram.com/" class="fa fa-instagram"></a></li>
                     </ul>
+
+               </div>
+
+               <div class="col-md-4 col-md-offset-4 col-sm-6">
+                   <p>版权所有©JacksonYANG 京ICP备18042698号</p>
                </div>
                
           </div>
@@ -212,6 +166,25 @@
 <script src="{% static 'js/jquery.parallax.js' %}"></script>
 <script src="{% static 'js/smoothscroll.js' %}"></script>
 <script src="{% static 'js/custom.js' %}"></script>
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+<script>(function(){
+var src = (document.location.protocol == "http:") ? "http://js.passport.qihucdn.com/11.0.1.js?be9258c78a104a0e4c9abccfcc102a92":"https://jspassport.ssl.qhimg.com/11.0.1.js?be9258c78a104a0e4c9abccfcc102a92";
+document.write('<script src="' + src + '" id="sozz"><\/script>');
+})();
+</script>
 
 </body>
 </html>

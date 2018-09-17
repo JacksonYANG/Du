@@ -1,14 +1,9 @@
 from django.db import models
 
 from django.urls import reverse
+from django.contrib.auth.models import User
 
 # Create your models here.
-
-# 作者的信息
-class Author(models.Model):
-    name = models.CharField(max_length=20)
-    rank = models.PositiveIntegerField(default=1)
-
 
 class Blog(models.Model):
     # 标题，内容，浏览次数，创建日期，修改日期, 作者
@@ -17,7 +12,7 @@ class Blog(models.Model):
     created_date = models.DateTimeField(auto_now_add=True)
     modified_date = models.DateTimeField(auto_now=True)
     browse = models.PositiveIntegerField(default=0)
-    author = models.ForeignKey(Author, on_delete=models.CASCADE)
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
 
 
     # 浏览次数自动增加
@@ -27,7 +22,12 @@ class Blog(models.Model):
 
     # 详情页的时候打开详细内容
     def get_absolute_url(self):
-        return reverse('Du:blog', kwargs={'pk': self.pk})
+        return reverse('Du:detail', kwargs={'pk': self.pk})
+
+class Music(models.Model):
+    name = models.CharField(max_length=50)
+    author = models.CharField(max_length=20)
+    source = models.CharField(max_length=255)
 
 # 热点数据库
 class Category(models.Model):
@@ -48,7 +48,17 @@ class News(models.Model):
 
     # 详情页的时候打开详细内容
     def get_absolute_url(self):
-        return reverse('Du:hot', kwargs={'pk': self.pk})
+        return reverse('Du:hot_detail', kwargs={'pk': self.pk})
+
+class Comment(models.Model):
+    # 用户名
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
+    content = models.TextField()
+    created_time = models.DateTimeField(auto_now_add=True)
+    blog = models.ForeignKey(Blog, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.content[:20]
 
 
 

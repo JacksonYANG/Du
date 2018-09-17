@@ -14,6 +14,7 @@
 
 <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
 <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
+<link rel="stylesheet" href="{% static 'favicon.ico' %}">
 
 <!-- Main css -->
 <link rel="stylesheet" href="{% static 'css/style.css' %}">
@@ -46,81 +47,114 @@
           <div class="collapse navbar-collapse">
                <ul class="nav navbar-nav navbar-right">
                     <li><a href={% url 'Du:index' %}>Home | 首页</a></li>
-                    <li><a href={% url 'Du:hot' %}>HotSpot | 热点</a></li>
                     <li class="active"><a href={% url 'Du:blog' %}>Blog | 博客</a></li>
-                    <li><a href={% url 'Du:user' %}>Me | 我</a></li>
+                    <li><a href={% url 'Du:hot' %}>HotSpot | 热点</a></li>
+                    <li><a href={% url 'Du:music' %}>Music | 音乐</a></li>
+                    <li><a href={% url 'Du:login' %}>登录 | 注册</a></li>
                </ul>
           </div>
 
   </div>
 </div>
 
+{#<!-- Gallery Section -->#}
+{##}
+{#<section id="gallery">#}
+{#     <div class="container">#}
+{#          <div class="row">#}
+{##}
+{#               <div class="col-md-offset-1 col-md-10 col-sm-12">#}
+{#                    <h2>Beautiful Images with Magnific Popup..</h2>#}
+{#                    <p>Aliquam blandit velit nisi, sed fringilla felis lacinia sed. Integer vitae porta felis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Phasellus non tristique lacus. Suspendisse ut tortor vitae risus lacinia tristique. Aliquam sed consectetur libero.</p>#}
+{#                    <p>Morbi tellus dolor, porta dignissim enim sit amet, dapibus sagittis erat. In blandit elit sit amet dui aliquet congue nec vel quam. Integer id tristique libero.</p>#}
+{#                    <span></span>#}
+{#                    <div class="col-md-6 col-sm-6">#}
+{#                         <div class="gallery-thumb">#}
+{#                              <a href="images/gallery-image1.jpg" class="image-popup">#}
+{#                                   <img src="images/gallery-image1.jpg" class="img-responsive" alt="Gallery Image">#}
+{#                              </a>#}
+{#                         </div>#}
+{#                    </div>#}
+{##}
+{#                    <div class="col-md-6 col-sm-6">#}
+{#                         <div class="gallery-thumb">#}
+{#                              <a href="images/gallery-image2.jpg" class="image-popup">#}
+{#                                   <img src="images/gallery-image2.jpg" class="img-responsive" alt="Gallery Image">#}
+{#                              </a>#}
+{#                         </div>#}
+{#                    </div>#}
+{##}
+{#                    <div class="col-md-6 col-sm-6">#}
+{#                         <div class="gallery-thumb">#}
+{#                              <a href="images/gallery-image3.jpg" class="image-popup">#}
+{#                                   <img src="images/gallery-image3.jpg" class="img-responsive" alt="Gallery Image">#}
+{#                              </a>#}
+{#                         </div>#}
+{#                    </div>#}
+{##}
+{#                    <div class="col-md-6 col-sm-6">#}
+{#                         <div class="gallery-thumb">#}
+{#                              <a href="images/gallery-image4.jpg" class="image-popup">#}
+{#                                   <img src="images/gallery-image4.jpg" class="img-responsive" alt="Gallery Image">#}
+{#                              </a>#}
+{#                         </div>#}
+{#                    </div>#}
+{##}
+{#                    <div class="col-md-6 col-sm-6">#}
+{#                         <div class="gallery-thumb">#}
+{#                              <a href="images/gallery-image5.jpg" class="image-popup">#}
+{#                                   <img src="images/gallery-image5.jpg" class="img-responsive" alt="Gallery Image">#}
+{#                              </a>#}
+{#                         </div>#}
+{#                    </div>#}
+{##}
+{#                    <div class="col-md-6 col-sm-6">#}
+{#                         <div class="gallery-thumb">#}
+{#                              <a href="images/gallery-image6.jpg" class="image-popup">#}
+{#                                   <img src="images/gallery-image6.jpg" class="img-responsive" alt="Gallery Image">#}
+{#                              </a>#}
+{#                         </div>#}
+{#                    </div>#}
+{##}
+{#                    <div class="col-md-12 col-sm-12">#}
+{#                         <p>Aliquam blandit velit nisi, sed fringilla felis lacinia sed. Integer vitae porta felis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Phasellus non tristique lacus.</p>#}
+{#                    </div>#}
+{#               </div>#}
+{##}
+{#          </div>#}
+{#     </div>#}
+{#</section>#}
 
+<!-- Blog Section -->
 
-<!-- Gallery Section -->
-
-<section id="gallery">
+<section id="blog">
      <div class="container">
           <div class="row">
+              <div class="col-md-offset-1 col-md-10 col-sm-12">
+                  {% for blog in blog_list %}
+                      <div class="blog-post-thumb">
+                          <div class="blog-post-title">
+                              <h3><a href='{{ blog.get_absolute_url }}'>{{ blog.title }}</a></h3>
+                          </div>
+                          <div class="blog-post-format">
+                              <span><a href="#"><img src="{% static 'images/author-image1.jpg' %}" class="img-responsive img-circle">{{ blog.author.name }}</a></span>
+                              <span><i class="fa fa-date"></i>{{ blog.created_date }}</span>
+{#                              <span><a href="#"><i class="fa fa-comment-o"></i>{{  }}</a></span>#}
+                          </div>
+                          <div class="blog-post-des">
+                              <p>{{ blog.article }}</p>
+                              <a href='{{ blog.get_absolute_url }}' class="btn btn-default">继续阅读</a>
+                          </div>
+                      </div>
 
-               <div class="col-md-offset-1 col-md-10 col-sm-12">
-                    <h2>Beautiful Images with Magnific Popup..</h2>
-                    <p>Aliquam blandit velit nisi, sed fringilla felis lacinia sed. Integer vitae porta felis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Phasellus non tristique lacus. Suspendisse ut tortor vitae risus lacinia tristique. Aliquam sed consectetur libero.</p>
-                    <p>Morbi tellus dolor, porta dignissim enim sit amet, dapibus sagittis erat. In blandit elit sit amet dui aliquet congue nec vel quam. Integer id tristique libero.</p>
-                    <span></span>
-                    <div class="col-md-6 col-sm-6">
-                         <div class="gallery-thumb">
-                              <a href="images/gallery-image1.jpg" class="image-popup">
-                                   <img src="images/gallery-image1.jpg" class="img-responsive" alt="Gallery Image">
-                              </a>
-                         </div>
-                    </div>
-
-                    <div class="col-md-6 col-sm-6">
-                         <div class="gallery-thumb">
-                              <a href="images/gallery-image2.jpg" class="image-popup">
-                                   <img src="images/gallery-image2.jpg" class="img-responsive" alt="Gallery Image">
-                              </a>
-                         </div>
-                    </div>
-
-                    <div class="col-md-6 col-sm-6">
-                         <div class="gallery-thumb">
-                              <a href="images/gallery-image3.jpg" class="image-popup">
-                                   <img src="images/gallery-image3.jpg" class="img-responsive" alt="Gallery Image">
-                              </a>
-                         </div>
-                    </div>
-
-                    <div class="col-md-6 col-sm-6">
-                         <div class="gallery-thumb">
-                              <a href="images/gallery-image4.jpg" class="image-popup">
-                                   <img src="images/gallery-image4.jpg" class="img-responsive" alt="Gallery Image">
-                              </a>
-                         </div>
-                    </div>
-
-                    <div class="col-md-6 col-sm-6">
-                         <div class="gallery-thumb">
-                              <a href="images/gallery-image5.jpg" class="image-popup">
-                                   <img src="images/gallery-image5.jpg" class="img-responsive" alt="Gallery Image">
-                              </a>
-                         </div>
-                    </div>
-
-                    <div class="col-md-6 col-sm-6">
-                         <div class="gallery-thumb">
-                              <a href="images/gallery-image6.jpg" class="image-popup">
-                                   <img src="images/gallery-image6.jpg" class="img-responsive" alt="Gallery Image">
-                              </a>
-                         </div>
-                    </div>
-
-                    <div class="col-md-12 col-sm-12">
-                         <p>Aliquam blandit velit nisi, sed fringilla felis lacinia sed. Integer vitae porta felis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Phasellus non tristique lacus.</p>
-                    </div>
+                  {% empty %}
+                      <div class="blog-post-thumb">
+                          <div class="blog-post-title">
+                              <h3><a href={% url 'Du:index' %}>暂时还没有热点博客喔</a></h3>
+                          </div>
+                      </div>
+                  {% endfor %}
                </div>
-
           </div>
      </div>
 </section>
@@ -140,7 +174,7 @@
                </div>
 
                <div class="col-md-4 col-md-offset-1 col-sm-6">
-                    <h3>来自The Only One</h3>
+                    <h3>来自JacksonYANG</h3>
                     <p><i class="fa fa-globe"></i> Weibo : http://weibo.com/u/6567633088</p>
                     <p><i class="fa fa-globe"></i> Wechat : LightBlog_TOO</p>
                     <p><i class="fa fa-save"></i> jacksonyang_work@outlook.com</p>
@@ -158,6 +192,10 @@
                          <li><a href="https://www.reddit.com/" class="fa fa-reddit"></a></li>
                          <li><a href="https://www.instagram.com/" class="fa fa-instagram"></a></li>
                     </ul>
+               </div>
+
+              <div class="col-md-4 col-md-offset-5 col-sm-6">
+                   <p>京ICP备18042698号</p>
                </div>
 
           </div>
@@ -178,6 +216,25 @@
 <script src="{% static 'js/magnific-popup-options.js' %}"></script>
 <script src="{% static 'js/jquery.magnific-popup.min.js' %}"></script>
 <script src="{% static 'js/custom.js' %}"></script>
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+<script>(function(){
+var src = (document.location.protocol == "http:") ? "http://js.passport.qihucdn.com/11.0.1.js?be9258c78a104a0e4c9abccfcc102a92":"https://jspassport.ssl.qhimg.com/11.0.1.js?be9258c78a104a0e4c9abccfcc102a92";
+document.write('<script src="' + src + '" id="sozz"><\/script>');
+})();
+</script>
 
 </body>
 </html>

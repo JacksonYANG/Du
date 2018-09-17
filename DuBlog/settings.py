@@ -25,7 +25,7 @@ SECRET_KEY = 'gf#n7mt8vksyt#sux!^o(zdd!1)(et8^__ktke=#nwaq!rk+v%'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*', '.jacksonyang.top']
 
 
 # Application definition
@@ -37,7 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'Du.apps.DuConfig',
+    'Du',
+    'news',
 ]
 
 MIDDLEWARE = [
@@ -78,7 +79,7 @@ WSGI_APPLICATION = 'DuBlog.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'blog',
+        'NAME': 'light_blog',
         'USER': 'root',
         'PASSWORD': 'Yzx970520',
         'HOST': '127.0.0.1',
